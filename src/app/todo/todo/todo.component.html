@@ -7,9 +7,9 @@
 
   <form>
     <div class="form-group">
-        <button type="submit" class="btn btn-primary" (click)="submitToDoForm($event)">Create</button>
-        <br>
-        <br>
+      <button type="submit" class="btn btn-primary" (click)="submitToDoForm($event)">Create</button>
+      <br>
+      <br>
       <input class="form-control" [(ngModel)]="content" id="content" [ngModelOptions]="{standalone: true}">
       <small id="contentHelp" class="form-text text-muted">Please Input ToDo Contents.</small>
     </div>
@@ -17,15 +17,16 @@
 
   <accordion [closeOthers]="false">
     <div *ngFor="let content of contents">
-        <accordion-group [heading]="content.getSubmitDate()" [isOpen]="'false'">
-          {{content.getContent()}}
-        </accordion-group>
+      <accordion-group [heading]="content.getSubmitDate()" [isOpen]="'false'">
+        {{content.getContent()}}
+      </accordion-group>
     </div>
   </accordion>
 
   <div *ngIf="contents.length > maxPageSize">
-  <pagination [boundaryLinks]="true" [totalItems]="contents.length" [(ngModel)]="currentPage" (pageChanged)="onPageChanged($event)"
-            previousText="&lsaquo;" nextText="&rsaquo;" firstText="&laquo;" lastText="&raquo;" itemsPerPage="5">
-</pagination>
+    <pagination [boundaryLinks]="true" [totalItems]="contents.length" [(ngModel)]="currentPage"
+      (pageChanged)="onPageChanged($event)" previousText="&lsaquo;" nextText="&rsaquo;" firstText="&laquo;"
+      lastText="&raquo;" itemsPerPage="5">
+    </pagination>
   </div>
 </div>

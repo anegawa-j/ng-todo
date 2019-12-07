@@ -29,7 +29,7 @@ export class TodoComponent implements OnInit {
 
   private _addContent() {
     const oldContents = this.contents;
-    if (oldContents.length === 5) {
+    if (oldContents.length === this.maxPageSize) {
          oldContents.pop();
          oldContents.unshift(new ContentModel(this.content));
          this.contents = oldContents;
