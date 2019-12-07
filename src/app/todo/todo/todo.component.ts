@@ -7,10 +7,14 @@ import { Component, OnInit } from '@angular/core';
 })
 export class TodoComponent implements OnInit {
 
+  maxPageSize = 5;
   contents: ContentModel[] = new Array();
   content: string;
+  currentPage: number;
 
-  constructor() { }
+  constructor() {
+    this.currentPage = 1;
+  }
 
   ngOnInit() {
   }
@@ -19,8 +23,19 @@ export class TodoComponent implements OnInit {
    this._addContent();
   }
 
+  onPageChanged(event: any) {
+    console.log(event);
+  }
+
   private _addContent() {
-    this.contents.unshift(new ContentModel(this.content));
+    const oldContents = this.contents;
+    if (oldContents.length === 5) {
+         oldContents.pop();
+         oldContents.unshift(new ContentModel(this.content));
+         this.contents = oldContents;
+    } else {
+      this.contents.unshift(new ContentModel(this.content));
+    }
     this.content = '';
   }
 

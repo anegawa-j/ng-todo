@@ -11,7 +11,7 @@
         <br>
         <br>
       <input class="form-control" [(ngModel)]="content" id="content" [ngModelOptions]="{standalone: true}">
-      <small id="contentHelp" class="form-text text-muted">Please input ToDo Contents.</small>
+      <small id="contentHelp" class="form-text text-muted">Please Input ToDo Contents.</small>
     </div>
   </form>
 
@@ -22,4 +22,10 @@
         </accordion-group>
     </div>
   </accordion>
+
+  <div *ngIf="contents.length > maxPageSize">
+  <pagination [boundaryLinks]="true" [totalItems]="contents.length" [(ngModel)]="currentPage" (pageChanged)="onPageChanged($event)"
+            previousText="&lsaquo;" nextText="&rsaquo;" firstText="&laquo;" lastText="&raquo;" itemsPerPage="5">
+</pagination>
+  </div>
 </div>
