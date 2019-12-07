@@ -3,7 +3,9 @@ import { CommonModule } from '@angular/common';
 
 import { TodoRoutingModule } from './todo-routing.module';
 import { TodoComponent } from './todo/todo.component';
-import { AccordionModule, ButtonsModule } from 'ngx-bootstrap';
+import { AccordionModule } from 'ngx-bootstrap/accordion';
+import { ButtonsModule } from 'ngx-bootstrap/buttons';
+import { PaginationModule } from 'ngx-bootstrap/pagination';
 import { FormsModule } from '@angular/forms';
 
 
@@ -12,9 +14,11 @@ import { FormsModule } from '@angular/forms';
   imports: [
     CommonModule,
     TodoRoutingModule,
-    AccordionModule,
+    AccordionModule.forRoot(),
     ButtonsModule,
-    FormsModule
+    FormsModule,
+    PaginationModule.forRoot(),
+
   ]
 })
 export class TodoModule { }
