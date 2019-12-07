@@ -15,10 +15,21 @@
     </div>
   </form>
 
+
   <accordion [closeOthers]="false">
     <div *ngFor="let content of contents">
       <accordion-group [heading]="content.getSubmitDate()" [isOpen]="'false'">
-        {{content.getContent()}}
+        <div class="row">
+          <div class="content">
+            <span class="content" style="cursor: pointer;" (click)="completeTask(content)">
+              <i-feather name="circle"></i-feather>
+            </span>
+            <div class="content">{{content.getContent()}}</div>
+          </div>
+          <span (click)="deleteTask(content.getId())" style="cursor: pointer;" class="delete">
+            <i-feather name="trash-2"></i-feather>
+          </span>
+        </div>
       </accordion-group>
     </div>
   </accordion>
