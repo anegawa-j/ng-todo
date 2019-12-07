@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import * as uuid from 'uuid';
 
 @Component({
   selector: 'app-todo',
@@ -23,6 +24,15 @@ export class TodoComponent implements OnInit {
    this._addContent();
   }
 
+  completeTask(content: ContentModel) {
+
+  }
+
+  deleteTask(id: string) {
+   const newContens = this.contents.filter(content => content.getId() !== id);
+   this.contents = newContens;
+  }
+
   onPageChanged(event: any) {
     console.log(event);
   }
@@ -42,11 +52,17 @@ export class TodoComponent implements OnInit {
 }
 
 export class ContentModel {
+  private id: string;
   private content: string;
   private submitDate: Date;
   constructor(content: string) {
+    this.id = uuid.v4();
     this.content = content;
     this.submitDate = new Date();
+  }
+
+  getId(): string {
+    return this.id;
   }
 
   getContent(): string {
