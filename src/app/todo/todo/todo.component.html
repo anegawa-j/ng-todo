@@ -10,7 +10,7 @@
       <button type="submit" class="btn btn-primary" (click)="submitToDoForm($event)">Create</button>
       <br>
       <br>
-      <input class="form-control" [(ngModel)]="content" id="content" [ngModelOptions]="{standalone: true}">
+      <input class="form-control" [(ngModel)]="content" id="content" [ngModelOptions]="{standalone: true}" autocomplete="off">
       <small id="contentHelp" class="form-text text-muted">Please Input ToDo Contents.</small>
     </div>
   </form>
